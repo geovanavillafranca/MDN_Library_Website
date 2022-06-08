@@ -28,22 +28,15 @@ class GenreAdmin(admin.ModelAdmin):
 
 @admin.register(BookInstance)
 class BookInstanceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'book', 'due_back', 'status')
-
+    list_display = ('book', 'status', 'borrower', 'due_back', 'id')
     list_filter = ('status', 'due_back')
 
     fieldsets = (
-        #  None, if you don't want a title
         (None, {
-            'fields': ('book', 'imprint', 'id')
+            'fields': ('book','imprint', 'id')
         }),
         ('Availability', {
-            'fields': ('status', 'due_back')
+            'fields': ('status', 'due_back','borrower')
         }),
     )
-
-
-@admin.register(Language)
-class LanguageAdmin(admin.ModelAdmin):
-    pass
 
